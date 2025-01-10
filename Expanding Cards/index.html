@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://cdn-icons-png.flaticon.com/512/4773/4773906.png"
+      type="image/x-icon"
+    />
+    <title>Expanding Cards</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        box-sizing: border-box;
+        display: flex;
+        width: 100%;
+        height: 100vh;
+      }
+      .container {
+        box-sizing: border-box;
+        width: 90%;
+        height: 80%;
+        margin: auto;
+        display: flex;
+        gap: 20px;
+      }
+      img {
+        width: 8%;
+        height: 100%;
+        border-radius: 80px;
+        object-fit: cover;
+        transition: all 1.5s ease-in-out;
+      }
+      .container img:first-child {
+        width: 60%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <img
+        src="https://images.unsplash.com/photo-1558979158-65a1eaa08691?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+        alt="Image 1"
+      />
+      <img
+        src="https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+        alt="Image 2"
+      />
+      <img
+        src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1353&q=80"
+        alt="Image 3"
+      />
+      <img
+        src="https://images.unsplash.com/photo-1551009175-8a68da93d5f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1351&q=80%27"
+        alt="Image 4"
+      />
+      <img
+        src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
+        alt="Image 5"
+      />
+    </div>
+
+    <script>
+      const images = document.getElementsByTagName("img");
+      Array.from(images, (img) => {
+        img.addEventListener("click", () => {
+          Array.from(images, (image) => {
+            image.style.width = "8%";
+          });
+          img.style.width = "60%";
+        });
+      });
+    </script>
+  </body>
+</html>
