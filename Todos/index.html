@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todos</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Playwrite+IN:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #e6e6fa;
+        opacity: 0.7;
+      }
+      .heading {
+        color: purple;
+        font-size: 7rem;
+        text-align: center;
+        font-family: "Lora", serif;
+        font-optical-sizing: auto;
+        font-style: normal;
+      }
+      .container {
+        width: 40%;
+        /* border: 1px solid; */
+        height: auto;
+        background-color: white;
+        margin: 50px auto;
+        box-shadow: 2px 3px 10px grey;
+      }
+      input {
+        width: 100%;
+        border: none;
+        padding: 20px 30px; 
+        border-bottom: 2px solid grey;
+      }
+      p {
+         padding:20px  30px;
+      }
+      input:focus{ 
+        outline: 1px solid purple;
+        box-shadow: 2px 3px 14px rgba(255, 138, 255, 0.737);
+      }
+      .complete{
+        color: darkgray;
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="heading">TODOS</h1>
+
+    <div class="container">
+      <input type="text" id="todoInput" placeholder="Enter Your Todo" />
+      <div id="todos">
+      </div>
+    </div>
+  </body>
+</html>
+<script src="script.js"></script>
