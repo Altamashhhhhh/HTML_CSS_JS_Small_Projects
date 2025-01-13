@@ -37,11 +37,13 @@ function handleDelete(id){
 }
 
 todoInput.addEventListener("keydown" , (event)=>{
-    if(event.key === "Enter"){
-        todosArray.push({text : todoInput.value , completed : false })
-        todoInput.value = "" ; 
-        renderTodo()
-    } 
+    if(todoInput.value !== ""){
+        if(event.key === "Enter"){
+            todosArray.push({text : todoInput.value , completed : false })
+            todoInput.value = "" ; 
+            renderTodo()
+        } 
+    }
     
 })
 
