@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/5442/5442207.png" type="image/x-icon">
+    <title> File Uploader</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: lightgrey;
+      }
+
+      form {
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 350px;
+        text-align: center;
+      }
+
+      input[type="file"] {
+        border: 2px dashed rgb(27, 125, 125);
+        padding: 15px;
+        width: 100%;
+        text-align: center;
+        cursor: pointer;
+        margin-bottom: 20px;
+        color: teal;
+        background: #f8f9fa;
+        border-radius: 5px;
+        outline: none;
+        transition: 0.3s ease;
+      }
+
+      input[type="file"]:hover {
+        border-color: teal;
+        background: #eef7ff;
+      }
+
+      button {
+        background-color: teal;
+        color: white;
+        border: none;
+        padding: 15px;
+        width: 100%;
+        font-size: 1.2em;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s ease;
+      }
+
+      button:hover {
+        background-color: rgb(20, 70, 70);
+      }
+    </style>
+  </head>
+  <body>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="avatar" />
+      <button type="submit">Upload File</button>
+    </form>
+  </body>
+</html>
