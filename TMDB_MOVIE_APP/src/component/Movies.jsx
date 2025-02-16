@@ -2,17 +2,17 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFetchedMovies, nextPage, previousPage } from "../redux/movieAction";
-import { Flex, Grid, Image, Text, Box, Button, Input } from "@chakra-ui/react"; 
+import { Flex, Grid, Image, Text, Box, Button, Input } from "@chakra-ui/react";
 import { addWishlist } from "../redux/WishlistAction";
-import {toaster} from "../components/ui/toaster"
+import { toaster } from "../components/ui/toaster";
 import { useNavigate } from "react-router-dom";
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const apiKeys = import.meta.env.VITE_API_KEY;
   const { page, movies } = useSelector((state) => state.movie);
-   const userId = useSelector((state) => state.auth.currentUserId);
-   const isLogged = useSelector((state) => state.auth.isLogged);
+  const userId = useSelector((state) => state.auth.currentUserId);
+  const isLogged = useSelector((state) => state.auth.isLogged);
 
   const URL =
     searchQuery === ""
@@ -34,14 +34,13 @@ const Movies = () => {
     dispatch(addWishlist({ ...payload, userId }));
   }
 
-  function handleSearchMovie(e){
-    const value = e.target.value
-     setSearchQuery(value)
+  function handleSearchMovie(e) {
+    const value = e.target.value;
+    setSearchQuery(value);
   }
   useEffect(() => {
     if (page > 0) fetchMovies(URL);
-  }, [page  , searchQuery ]);
-
+  }, [page, searchQuery]);
 
   useEffect(() => {
     if (!isLogged) {
@@ -49,13 +48,11 @@ const Movies = () => {
         title: "Please Login First, Redirecting to login page",
         type: "error",
       });
-  
-      setTimeout(() => {
-        navigate("/login");
-      }, 1000);
+
+      navigate("/login");
     }
-  }, [isLogged]); // 🔥 Runs only when `isLogged` changes
-  
+  }, [isLogged]);  
+
   return (
     <Box w="100%" minH="100vh" p={10} textAlign="center" bg="gray.900">
       <Text fontSize="3xl" fontWeight="bold" mb={6} color="blue.400">
@@ -92,52 +89,53 @@ const Movies = () => {
         }}
         gap={6}
       >
-        {isLogged && movies?.map((movie) => (
-          <Flex
-            key={movie.id}
-            p={4}
-            direction="column"
-            align="center"
-            justify={"space-between"}
-            bg="gray.800"
-            borderRadius="lg"
-            boxShadow="lg"
-            overflow="hidden"
-            transition="transform 0.2s ease-in-out"
-            _hover={{ transform: "scale(1.05)" }}
-          >
-            <Image
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              borderRadius="md"
-              objectFit="cover"
-              h="300px"
-              w="100%"
-            />
+        {isLogged &&
+          movies?.map((movie) => (
+            <Flex
+              key={movie.id}
+              p={4}
+              direction="column"
+              align="center"
+              justify={"space-between"}
+              bg="gray.800"
+              borderRadius="lg"
+              boxShadow="lg"
+              overflow="hidden"
+              transition="transform 0.2s ease-in-out"
+              _hover={{ transform: "scale(1.05)" }}
+            >
+              <Image
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                borderRadius="md"
+                objectFit="cover"
+                h="300px"
+                w="100%"
+              />
 
-            <Box p={4} textAlign="center">
-              <Text fontSize="lg" fontWeight="bold" color="white">
-                {movie.title}
-              </Text>
+              <Box p={4} textAlign="center">
+                <Text fontSize="lg" fontWeight="bold" color="white">
+                  {movie.title}
+                </Text>
 
-              <Text fontSize="sm" color="gray.400" mt={1}>
-                📅 {movie.release_date} | ⭐ {movie.vote_average}
-              </Text>
+                <Text fontSize="sm" color="gray.400" mt={1}>
+                  📅 {movie.release_date} | ⭐ {movie.vote_average}
+                </Text>
 
-              <Text fontSize="sm" color="gray.300" mt={3} noOfLines={3}>
-                {movie.overview.split(" ").slice(0, 20).join(" ") + " ......"}
-              </Text>
-              <Button
-                onClick={() => handleAddWishlist(movie)}
-                mt={4}
-                variant={"solid"}
-                colorPalette={"yellow"}
-              >
-                ADD TO WISHLIST
-              </Button>
-            </Box>
-          </Flex>
-        ))}
+                <Text fontSize="sm" color="gray.300" mt={3} noOfLines={3}>
+                  {movie.overview.split(" ").slice(0, 20).join(" ") + " ......"}
+                </Text>
+                <Button
+                  onClick={() => handleAddWishlist(movie)}
+                  mt={4}
+                  variant={"solid"}
+                  colorPalette={"yellow"}
+                >
+                  ADD TO WISHLIST
+                </Button>
+              </Box>
+            </Flex>
+          ))}
       </Grid>
 
       <Flex justify="space-around" mt={6} w="40%" m="30px auto">

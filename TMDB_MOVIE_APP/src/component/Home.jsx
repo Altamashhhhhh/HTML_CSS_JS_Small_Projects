@@ -6,22 +6,21 @@ import { checkUserLogin } from "../redux/action";
 import { Box, Flex, Button, Heading, Text } from "@chakra-ui/react";
 
 const Home = () => {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const isExist = localStorage.getItem("currentUserId");
     if (isExist) {
-      dispatch(checkUserLogin({status : true , userId : isExist})); 
+      dispatch(checkUserLogin({ status: true, userId: isExist }));
     } else {
-      dispatch(checkUserLogin({status : false , userId : ""}));
+      dispatch(checkUserLogin({ status: false, userId: "" }));
       toaster.create({
         title: "Please Login First : Redirecting to Login Page",
         type: "error",
       });
-      setTimeout(() => {
-        navigate("/login");
-      }, 1000);
+
+      navigate("/login");
     }
   }, []);
 

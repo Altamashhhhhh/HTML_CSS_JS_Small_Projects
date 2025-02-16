@@ -41,11 +41,9 @@ const Wishlist = () => {
         type: "error",
       });
 
-      setTimeout(() => {
-        navigate("/login");
-      }, 1000);
+      navigate("/login");
     }
-  }, [isLogged]); // 🔥 Runs only when `isLogged` changes
+  }, [isLogged]);  
 
   return (
     <Box w="100%" minH="100vh" p={10} textAlign="center" bg="gray.900">
@@ -63,51 +61,52 @@ const Wishlist = () => {
         }}
         gap={6}
       >
-        {isLogged && wishlists?.map((movie) => (
-          <Flex
-            key={movie.id}
-            p={4}
-            direction="column"
-            align="center"
-            justify={"space-between"}
-            bg="gray.800"
-            borderRadius="lg"
-            boxShadow="lg"
-            overflow="hidden"
-            transition="transform 0.2s ease-in-out"
-            _hover={{ transform: "scale(1.05)" }}
-          >
-            <Image
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              borderRadius="md"
-              objectFit="cover"
-              h="300px"
-              w="100%"
-            />
+        {isLogged &&
+          wishlists?.map((movie) => (
+            <Flex
+              key={movie.id}
+              p={4}
+              direction="column"
+              align="center"
+              justify={"space-between"}
+              bg="gray.800"
+              borderRadius="lg"
+              boxShadow="lg"
+              overflow="hidden"
+              transition="transform 0.2s ease-in-out"
+              _hover={{ transform: "scale(1.05)" }}
+            >
+              <Image
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                borderRadius="md"
+                objectFit="cover"
+                h="300px"
+                w="100%"
+              />
 
-            <Box p={4} textAlign="center">
-              <Text fontSize="lg" fontWeight="bold" color="white">
-                {movie.title}
-              </Text>
+              <Box p={4} textAlign="center">
+                <Text fontSize="lg" fontWeight="bold" color="white">
+                  {movie.title}
+                </Text>
 
-              <Text fontSize="sm" color="gray.400" mt={1}>
-                📅 {movie.release_date} | ⭐ {movie.vote_average}
-              </Text>
+                <Text fontSize="sm" color="gray.400" mt={1}>
+                  📅 {movie.release_date} | ⭐ {movie.vote_average}
+                </Text>
 
-              <Text fontSize="sm" color="gray.300" mt={3} noOfLines={3}>
-                {movie.overview.split(" ").slice(0, 20).join(" ") + " ......"}
-              </Text>
-              <Button
-                onClick={() => handleRemoveFromWishlist(movie.id)}
-                colorPalette={"yellow"}
-                mt={5}
-              >
-                REMOVE FROM WISHLIST
-              </Button>
-            </Box>
-          </Flex>
-        ))}
+                <Text fontSize="sm" color="gray.300" mt={3} noOfLines={3}>
+                  {movie.overview.split(" ").slice(0, 20).join(" ") + " ......"}
+                </Text>
+                <Button
+                  onClick={() => handleRemoveFromWishlist(movie.id)}
+                  colorPalette={"yellow"}
+                  mt={5}
+                >
+                  REMOVE FROM WISHLIST
+                </Button>
+              </Box>
+            </Flex>
+          ))}
       </Grid>
     </Box>
   );
