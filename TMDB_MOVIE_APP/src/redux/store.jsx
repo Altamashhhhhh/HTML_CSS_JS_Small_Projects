@@ -9,7 +9,6 @@ export const store = configureStore({
         movie : MovieReducer , 
         auth : AuthReducer , 
         wishlist : wishlistReducer
-    },
-    devTools: import.meta.env.MODE !== "production"
+    }
 
 })
