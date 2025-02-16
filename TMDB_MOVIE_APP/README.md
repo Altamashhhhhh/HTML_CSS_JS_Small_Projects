@@ -4,6 +4,10 @@ Welcome to **TMDB Movie App**, a **modern, stylish, and fully responsive** movie
 
 With this app, you can **search movies, add them to your wishlist, and manage your favorites** – all in a beautifully designed, mobile-friendly UI powered by **Chakra UI**. ✨  
 
+
+🌟 **Live Demo:** [Click Here to Visit the Website 🚀](https://tmdbmovieapp-three.vercel.app/login)  
+
+
 🚀 **Key Highlights:**  
 - 🔐 **Authentication System** – Secure **Login & Registration** with Firebase  
 - 🔍 **Search Movies** – Find your favorite movies instantly 🎞️  
