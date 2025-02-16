@@ -13,7 +13,7 @@ const links = [
 const Navbar = () => {
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.auth.isLogged);
-  const navigate = useNavigate() 
+  const navigate = useNavigate();
   return (
     <Box w="100%" h="80px" bg="black" color="gold">
       <Flex w="60%" h="100%" m="0 auto" justify="space-around" align="center">
@@ -39,8 +39,10 @@ const Navbar = () => {
           </NavLink>
         ))}
         <Button
-          onClick={() => dispatch(userLogout())}
-          navigate="/login"
+          onClick={() => {
+            dispatch(userLogout());
+            navigate("/login");
+          }}
           colorPalette={"yellow"}
           w="100px"
           h="40px"
