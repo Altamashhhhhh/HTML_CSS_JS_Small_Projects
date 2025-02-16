@@ -16,8 +16,8 @@ const Movies = () => {
 
   const URL =
     searchQuery === ""
-      ? `https://api.themoviedb.org/3/movie/popular?api_key=${apiKeys}&page=${page}`
-      : `https://api.themoviedb.org/3/search/movie?api_key=${apiKeys}&query=${searchQuery}&page=${page}`;
+      ? `https://api.themoviedb.org/3/movie/popular?api_key=${apiKeys}&page=${page}&origin=*`
+      : `https://api.themoviedb.org/3/search/movie?api_key=${apiKeys}&query=${searchQuery}&page=${page}&origin=*`;
 
   const dispatch = useDispatch();
 
